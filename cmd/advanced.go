@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -16,9 +15,10 @@ import (
 )
 
 var advancedCmd = &cobra.Command{
-	Use:   "advanced",
-	Short: "Manage advanced settings",
-	Long:  "Create, list, update, and delete advanced settings on the HEPIC platform.",
+	Use:     "advanced",
+	Short:   "Manage advanced settings",
+	Long:    "Create, list, update, and delete advanced settings on the HEPIC platform.",
+	GroupID: "config",
 }
 
 var advancedListCmd = &cobra.Command{
@@ -31,9 +31,8 @@ var advancedListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ListAdvanced(context.Background(), client)
+		result, err := admin.ListAdvanced(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -54,9 +53,8 @@ var advancedGetCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.GetAdvanced(context.Background(), client, uuid)
+		result, err := admin.GetAdvanced(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -81,9 +79,8 @@ var advancedCreateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.CreateAdvanced(context.Background(), client, data)
+		result, err := admin.CreateAdvanced(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -110,9 +107,8 @@ var advancedUpdateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.UpdateAdvanced(context.Background(), client, uuid, data)
+		result, err := admin.UpdateAdvanced(cmd.Context(), client, uuid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -146,9 +142,8 @@ var advancedDeleteCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.DeleteAdvanced(context.Background(), client, uuid)
+		result, err := admin.DeleteAdvanced(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

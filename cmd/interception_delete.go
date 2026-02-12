@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -56,7 +55,7 @@ func runInterceptionDelete(cmd *cobra.Command, args []string) error {
 		}
 	}
 
-	result, err := recording.DeleteInterception(context.Background(), client, uuid)
+	result, err := recording.DeleteInterception(cmd.Context(), client, uuid)
 	if err != nil {
 		return err
 	}

@@ -8,12 +8,18 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"time"
 
 	"github.com/spf13/viper"
 )
+
+// PathEscape escapes a string for safe use in URL path segments.
+func PathEscape(s string) string {
+	return url.PathEscape(s)
+}
 
 // Client is the central HTTP client for the HEPIC API.
 type Client struct {

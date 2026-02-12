@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"os"
@@ -47,7 +46,7 @@ func runExportText(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	body, err := export.ExportText(context.Background(), client, params)
+	body, err := export.ExportText(cmd.Context(), client, params)
 	if err != nil {
 		return err
 	}

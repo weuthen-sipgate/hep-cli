@@ -16,7 +16,7 @@ func DBStats(ctx context.Context, client *api.Client) (json.RawMessage, error) {
 // Measurements queries measurements for a given database ID. POST /statistic/_measurements/{dbid}
 func Measurements(ctx context.Context, client *api.Client, dbid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/statistic/_measurements/"+dbid, data, &result)
+	err := client.Post(ctx, "/statistic/_measurements/"+api.PathEscape(dbid), data, &result)
 	return result, err
 }
 

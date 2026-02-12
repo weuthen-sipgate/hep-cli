@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -40,9 +39,8 @@ var tokenDeleteCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := user.DeleteToken(context.Background(), client, uuid)
+		result, err := user.DeleteToken(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

@@ -42,19 +42,16 @@ func runCallSearch(cmd *cobra.Command, args []string) error {
 
 	client, err := api.NewClient()
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	params, err := call.NewSearchParams(from, to, caller, callee, callID)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	result, err := call.SearchData(cmd.Context(), client, params)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 

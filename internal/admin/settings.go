@@ -24,21 +24,21 @@ func CreateSetting(ctx context.Context, client *api.Client, data interface{}) (j
 // GetSettingsByCategory retrieves settings by category. GET /user/settings/{category}
 func GetSettingsByCategory(ctx context.Context, client *api.Client, category string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/user/settings/"+category, &result)
+	err := client.Get(ctx, "/user/settings/"+api.PathEscape(category), &result)
 	return result, err
 }
 
 // UpdateSetting updates an existing user setting. PUT /user/settings/{uuid}
 func UpdateSetting(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/user/settings/"+uuid, data, &result)
+	err := client.Put(ctx, "/user/settings/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
 // DeleteSetting deletes a user setting. DELETE /user/settings/{uuid}
 func DeleteSetting(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/user/settings/"+uuid, &result)
+	err := client.Delete(ctx, "/user/settings/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
@@ -59,20 +59,20 @@ func CreateAdvanced(ctx context.Context, client *api.Client, data interface{}) (
 // GetAdvanced retrieves an advanced setting by UUID. GET /advanced/{uuid}
 func GetAdvanced(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/advanced/"+uuid, &result)
+	err := client.Get(ctx, "/advanced/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
 // UpdateAdvanced updates an existing advanced setting. PUT /advanced/{uuid}
 func UpdateAdvanced(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/advanced/"+uuid, data, &result)
+	err := client.Put(ctx, "/advanced/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
 // DeleteAdvanced deletes an advanced setting. DELETE /advanced/{uuid}
 func DeleteAdvanced(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/advanced/"+uuid, &result)
+	err := client.Delete(ctx, "/advanced/"+api.PathEscape(uuid), &result)
 	return result, err
 }

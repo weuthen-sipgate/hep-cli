@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -16,8 +15,9 @@ import (
 )
 
 var settingsCmd = &cobra.Command{
-	Use:   "settings",
-	Short: "Manage user settings",
+	Use:     "settings",
+	Short:   "Manage user settings",
+	GroupID: "config",
 	Long:  "Create, list, update, and delete user settings on the HEPIC platform.",
 }
 
@@ -31,9 +31,8 @@ var settingsListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ListSettings(context.Background(), client)
+		result, err := admin.ListSettings(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -54,9 +53,8 @@ var settingsGetCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.GetSettingsByCategory(context.Background(), client, category)
+		result, err := admin.GetSettingsByCategory(cmd.Context(), client, category)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -81,9 +79,8 @@ var settingsCreateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.CreateSetting(context.Background(), client, data)
+		result, err := admin.CreateSetting(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -110,9 +107,8 @@ var settingsUpdateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.UpdateSetting(context.Background(), client, uuid, data)
+		result, err := admin.UpdateSetting(cmd.Context(), client, uuid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -146,9 +142,8 @@ var settingsDeleteCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.DeleteSetting(context.Background(), client, uuid)
+		result, err := admin.DeleteSetting(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/models"
@@ -64,7 +63,7 @@ func runInterceptionCreate(cmd *cobra.Command, args []string) error {
 		data.StopDate = v
 	}
 
-	result, err := recording.CreateInterception(context.Background(), client, data)
+	result, err := recording.CreateInterception(cmd.Context(), client, data)
 	if err != nil {
 		return err
 	}

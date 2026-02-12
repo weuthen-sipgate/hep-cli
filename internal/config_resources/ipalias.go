@@ -28,7 +28,7 @@ func CreateAlias(ctx context.Context, client *api.Client, data interface{}) (jso
 // PUT /ipalias/{uuid}
 func UpdateAlias(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/ipalias/"+uuid, data, &result)
+	err := client.Put(ctx, "/ipalias/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
@@ -36,7 +36,7 @@ func UpdateAlias(ctx context.Context, client *api.Client, uuid string, data inte
 // DELETE /ipalias/{uuid}
 func DeleteAlias(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/ipalias/"+uuid, &result)
+	err := client.Delete(ctx, "/ipalias/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 

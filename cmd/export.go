@@ -9,8 +9,9 @@ import (
 )
 
 var exportCmd = &cobra.Command{
-	Use:   "export",
-	Short: "Export call data in various formats",
+	Use:     "export",
+	Short:   "Export call data in various formats",
+	GroupID: "call",
 	Long: `Export call data as PCAP, SIPp, text, reports, or archives.
 
 Available subcommands:

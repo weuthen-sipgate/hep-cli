@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/admin"
 	"hepic-cli/internal/api"
@@ -11,8 +10,9 @@ import (
 )
 
 var shareCmd = &cobra.Command{
-	Use:   "share",
-	Short: "Share call data, reports, and exports",
+	Use:     "share",
+	Short:   "Share call data, reports, and exports",
+	GroupID: "call",
 	Long: `Share various types of call data via the HEPIC platform.
 
 Available subcommands:
@@ -38,9 +38,8 @@ var shareReportCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ShareReport(context.Background(), client, reportType, uuid)
+		result, err := admin.ShareReport(cmd.Context(), client, reportType, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -61,9 +60,8 @@ var shareTransactionCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ShareTransaction(context.Background(), client, uuid)
+		result, err := admin.ShareTransaction(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -84,9 +82,8 @@ var sharePcapCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.SharePCAP(context.Background(), client, uuid)
+		result, err := admin.SharePCAP(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -107,9 +104,8 @@ var shareTextCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ShareText(context.Background(), client, uuid)
+		result, err := admin.ShareText(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -130,9 +126,8 @@ var shareIPAliasCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ShareIPAlias(context.Background(), client, uuid)
+		result, err := admin.ShareIPAlias(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -153,9 +148,8 @@ var shareMappingCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ShareMapping(context.Background(), client, uuid)
+		result, err := admin.ShareMapping(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

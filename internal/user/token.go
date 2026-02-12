@@ -17,13 +17,13 @@ func CreateToken(ctx context.Context, client *api.Client, data interface{}) (jso
 // GetToken retrieves a specific auth token. GET /token/auth/{uuid}
 func GetToken(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/token/auth/"+uuid, &result)
+	err := client.Get(ctx, "/token/auth/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
 // DeleteToken deletes an auth token. DELETE /token/auth/{uuid}
 func DeleteToken(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/token/auth/"+uuid, &result)
+	err := client.Delete(ctx, "/token/auth/"+api.PathEscape(uuid), &result)
 	return result, err
 }

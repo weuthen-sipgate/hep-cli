@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"os"
@@ -23,9 +22,8 @@ var userExportCmd = &cobra.Command{
 			return err
 		}
 
-		body, err := user.Export(context.Background(), client)
+		body, err := user.Export(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 		defer body.Close()

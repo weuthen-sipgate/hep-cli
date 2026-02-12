@@ -9,7 +9,7 @@ import (
 // GetDashboard retrieves a Grafana dashboard by UID. GET /proxy/grafana/dashboards/uid/{uid}
 func GetDashboard(ctx context.Context, client *api.Client, uid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/proxy/grafana/dashboards/uid/"+uid, &result)
+	err := client.Get(ctx, "/proxy/grafana/dashboards/uid/"+api.PathEscape(uid), &result)
 	return result, err
 }
 
@@ -30,7 +30,7 @@ func Org(ctx context.Context, client *api.Client) (json.RawMessage, error) {
 // SearchDashboard searches for a Grafana dashboard by UID. GET /proxy/grafana/search/{uid}
 func SearchDashboard(ctx context.Context, client *api.Client, uid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/proxy/grafana/search/"+uid, &result)
+	err := client.Get(ctx, "/proxy/grafana/search/"+api.PathEscape(uid), &result)
 	return result, err
 }
 

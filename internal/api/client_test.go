@@ -190,6 +190,84 @@ func TestGetRaw_Success(t *testing.T) {
 	}
 }
 
+func TestPathEscape(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "simple string",
+			input:    "hello",
+			expected: "hello",
+		},
+		{
+			name:     "string with spaces",
+			input:    "hello world",
+			expected: "hello%20world",
+		},
+		{
+			name:     "string with slash",
+			input:    "path/segment",
+			expected: "path%2Fsegment",
+		},
+		{
+			name:     "string with at-sign (allowed in path segments per RFC 3986)",
+			input:    "user@domain.com",
+			expected: "user@domain.com",
+		},
+		{
+			name:     "string with plus",
+			input:    "query+value",
+			expected: "query+value",
+		},
+		{
+			name:     "empty string",
+			input:    "",
+			expected: "",
+		},
+		{
+			name:     "numeric string",
+			input:    "12345",
+			expected: "12345",
+		},
+		{
+			name:     "string with unicode",
+			input:    "benutzer-name",
+			expected: "benutzer-name",
+		},
+		{
+			name:     "string with percent",
+			input:    "100%done",
+			expected: "100%25done",
+		},
+		{
+			name:     "string with hash",
+			input:    "section#anchor",
+			expected: "section%23anchor",
+		},
+		{
+			name:     "string with question mark",
+			input:    "query?param=value",
+			expected: "query%3Fparam=value",
+		},
+		{
+			name:     "SIP call-id with at-sign (allowed in path segments)",
+			input:    "abc123@10.0.0.1",
+			expected: "abc123@10.0.0.1",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := PathEscape(tt.input)
+			if result != tt.expected {
+				t.Errorf("PathEscape(%q) = %q, expected %q", tt.input, result, tt.expected)
+			}
+		})
+	}
+}
+
 func TestVerboseLogging(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)

@@ -84,19 +84,16 @@ func runCallReportDTMF(cmd *cobra.Command, args []string) error {
 
 	client, err := api.NewClient()
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	params, err := call.NewSearchParams(from, to, "", "", callID)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	result, err := call.ReportDTMF(cmd.Context(), client, params)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
@@ -110,19 +107,16 @@ func runCallReportLog(cmd *cobra.Command, args []string) error {
 
 	client, err := api.NewClient()
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	params, err := call.NewSearchParams(from, to, "", "", callID)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	result, err := call.ReportLog(cmd.Context(), client, params)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
@@ -136,19 +130,16 @@ func runCallReportQOS(cmd *cobra.Command, args []string) error {
 
 	client, err := api.NewClient()
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	params, err := call.NewSearchParams(from, to, "", "", callID)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 
 	result, err := call.ReportQOS(cmd.Context(), client, params)
 	if err != nil {
-		output.PrintError(err)
 		return err
 	}
 

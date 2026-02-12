@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -34,7 +33,7 @@ func runRecordingInfo(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("uuid is required")
 	}
 
-	result, err := recording.Info(context.Background(), client, uuid)
+	result, err := recording.Info(cmd.Context(), client, uuid)
 	if err != nil {
 		return err
 	}

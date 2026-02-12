@@ -19,7 +19,7 @@ func List(ctx context.Context, client *api.Client) (json.RawMessage, error) {
 // GET /agent/subscribe/{uuid}
 func Get(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/agent/subscribe/"+uuid, &result)
+	err := client.Get(ctx, "/agent/subscribe/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
@@ -27,7 +27,7 @@ func Get(ctx context.Context, client *api.Client, uuid string) (json.RawMessage,
 // PUT /agent/subscribe/{uuid}
 func Update(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/agent/subscribe/"+uuid, data, &result)
+	err := client.Put(ctx, "/agent/subscribe/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
@@ -35,7 +35,7 @@ func Update(ctx context.Context, client *api.Client, uuid string, data interface
 // DELETE /agent/subscribe/{uuid}
 func Delete(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/agent/subscribe/"+uuid, &result)
+	err := client.Delete(ctx, "/agent/subscribe/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
@@ -43,7 +43,7 @@ func Delete(ctx context.Context, client *api.Client, uuid string) (json.RawMessa
 // POST /agent/search/{guid}/{type}
 func Search(ctx context.Context, client *api.Client, guid, agentType string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/agent/search/"+guid+"/"+agentType, nil, &result)
+	err := client.Post(ctx, "/agent/search/"+api.PathEscape(guid)+"/"+api.PathEscape(agentType), nil, &result)
 	return result, err
 }
 
@@ -51,7 +51,7 @@ func Search(ctx context.Context, client *api.Client, guid, agentType string) (js
 // GET /agent/type/{type}
 func ListByType(ctx context.Context, client *api.Client, agentType string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/agent/type/"+agentType, &result)
+	err := client.Get(ctx, "/agent/type/"+api.PathEscape(agentType), &result)
 	return result, err
 }
 

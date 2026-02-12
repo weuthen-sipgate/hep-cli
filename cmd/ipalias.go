@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -17,9 +16,10 @@ import (
 )
 
 var ipaliasCmd = &cobra.Command{
-	Use:   "ipalias",
-	Short: "Manage IP aliases",
-	Long:  "List, create, update, delete, import, and export IP aliases for the HEPIC platform.",
+	Use:     "ipalias",
+	Short:   "Manage IP aliases",
+	Long:    "List, create, update, delete, import, and export IP aliases for the HEPIC platform.",
+	GroupID: "config",
 }
 
 var ipaliasListCmd = &cobra.Command{
@@ -30,7 +30,7 @@ var ipaliasListCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.ListAliases(context.Background(), client)
+		result, err := config_resources.ListAliases(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -65,7 +65,7 @@ var ipaliasCreateCmd = &cobra.Command{
 			"status":     status,
 		}
 
-		result, err := config_resources.CreateAlias(context.Background(), client, data)
+		result, err := config_resources.CreateAlias(cmd.Context(), client, data)
 		if err != nil {
 			return err
 		}
@@ -115,7 +115,7 @@ var ipaliasUpdateCmd = &cobra.Command{
 			data["status"] = v
 		}
 
-		result, err := config_resources.UpdateAlias(context.Background(), client, uuid, data)
+		result, err := config_resources.UpdateAlias(cmd.Context(), client, uuid, data)
 		if err != nil {
 			return err
 		}
@@ -139,7 +139,7 @@ var ipaliasDeleteCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.DeleteAlias(context.Background(), client, args[0])
+		result, err := config_resources.DeleteAlias(cmd.Context(), client, args[0])
 		if err != nil {
 			return err
 		}
@@ -162,7 +162,7 @@ var ipaliasDeleteAllCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.DeleteAllAliases(context.Background(), client)
+		result, err := config_resources.DeleteAllAliases(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -179,7 +179,7 @@ var ipaliasExportCmd = &cobra.Command{
 			return err
 		}
 
-		body, err := config_resources.ExportAliases(context.Background(), client)
+		body, err := config_resources.ExportAliases(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -224,7 +224,7 @@ var ipaliasImportCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := config_resources.ImportAliases(context.Background(), client, filePath)
+		result, err := config_resources.ImportAliases(cmd.Context(), client, filePath)
 		if err != nil {
 			return err
 		}

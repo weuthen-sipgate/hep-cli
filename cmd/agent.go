@@ -5,8 +5,9 @@ import (
 )
 
 var agentCmd = &cobra.Command{
-	Use:   "agent",
-	Short: "Manage capture agents",
+	Use:     "agent",
+	Short:   "Manage capture agents",
+	GroupID: "admin",
 	Long: `Manage capture agents and their subscriptions.
 
 Available subcommands:

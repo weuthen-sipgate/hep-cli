@@ -30,6 +30,6 @@ func Labels(ctx context.Context, client *api.Client) (json.RawMessage, error) {
 // LabelDetail retrieves details for a specific Prometheus label. GET /prometheus/label/{userlabel}
 func LabelDetail(ctx context.Context, client *api.Client, label string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/prometheus/label/"+label, &result)
+	err := client.Get(ctx, "/prometheus/label/"+api.PathEscape(label), &result)
 	return result, err
 }

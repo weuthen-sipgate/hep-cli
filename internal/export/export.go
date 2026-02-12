@@ -127,7 +127,7 @@ func ExportTransactionArchive(ctx context.Context, client *api.Client, params Ex
 // Valid types: active, hepicapp, logs, picserver, rtpagent
 func ExportAction(ctx context.Context, client *api.Client, actionType string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/export/action/"+actionType, &result)
+	err := client.Get(ctx, "/export/action/"+api.PathEscape(actionType), &result)
 	if err != nil {
 		return nil, err
 	}

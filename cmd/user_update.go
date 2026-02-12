@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -59,9 +58,8 @@ var userUpdateCmd = &cobra.Command{
 			return fmt.Errorf("no fields specified to update")
 		}
 
-		result, err := user.Update(context.Background(), client, uuid, data)
+		result, err := user.Update(cmd.Context(), client, uuid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

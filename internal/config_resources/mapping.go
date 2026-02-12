@@ -27,7 +27,7 @@ func CreateMapping(ctx context.Context, client *api.Client, data interface{}) (j
 // PUT /mapping/protocol/{uuid}
 func UpdateMapping(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/mapping/protocol/"+uuid, data, &result)
+	err := client.Put(ctx, "/mapping/protocol/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
@@ -35,7 +35,7 @@ func UpdateMapping(ctx context.Context, client *api.Client, uuid string, data in
 // DELETE /mapping/protocol/{uuid}
 func DeleteMapping(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/mapping/protocol/"+uuid, &result)
+	err := client.Delete(ctx, "/mapping/protocol/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
@@ -59,6 +59,6 @@ func ResetAll(ctx context.Context, client *api.Client) (json.RawMessage, error) 
 // GET /mapping/protocol/reset/{uuid}
 func ResetOne(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/mapping/protocol/reset/"+uuid, &result)
+	err := client.Get(ctx, "/mapping/protocol/reset/"+api.PathEscape(uuid), &result)
 	return result, err
 }

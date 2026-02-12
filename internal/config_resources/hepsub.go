@@ -27,7 +27,7 @@ func CreateHepsub(ctx context.Context, client *api.Client, data interface{}) (js
 // PUT /hepsub/protocol/{uuid}
 func UpdateHepsub(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/hepsub/protocol/"+uuid, data, &result)
+	err := client.Put(ctx, "/hepsub/protocol/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
@@ -35,7 +35,7 @@ func UpdateHepsub(ctx context.Context, client *api.Client, uuid string, data int
 // DELETE /hepsub/protocol/{uuid}
 func DeleteHepsub(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/hepsub/protocol/"+uuid, &result)
+	err := client.Delete(ctx, "/hepsub/protocol/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 

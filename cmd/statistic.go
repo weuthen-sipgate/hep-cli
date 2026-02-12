@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 
@@ -13,9 +12,10 @@ import (
 )
 
 var statisticCmd = &cobra.Command{
-	Use:   "statistic",
-	Short: "Query statistics and metrics",
-	Long:  "Query database statistics, measurements, metrics, retentions, and time-series data.",
+	Use:     "statistic",
+	Short:   "Query statistics and metrics",
+	Long:    "Query database statistics, measurements, metrics, retentions, and time-series data.",
+	GroupID: "monitoring",
 }
 
 var statisticDBCmd = &cobra.Command{
@@ -28,9 +28,8 @@ var statisticDBCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.DBStats(context.Background(), client)
+		result, err := statistic.DBStats(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -77,9 +76,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.Data(context.Background(), client, data)
+		result, err := statistic.Data(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -111,9 +109,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.Metrics(context.Background(), client, data)
+		result, err := statistic.Metrics(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -147,9 +144,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.Measurements(context.Background(), client, dbid, data)
+		result, err := statistic.Measurements(cmd.Context(), client, dbid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -181,9 +177,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.Retentions(context.Background(), client, data)
+		result, err := statistic.Retentions(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

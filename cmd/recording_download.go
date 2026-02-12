@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"os"
@@ -45,7 +44,7 @@ func runRecordingDownload(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("invalid download type %q: must be 'audio' or 'pcap'", dlType)
 	}
 
-	body, err := recording.Download(context.Background(), client, dlType, uuid)
+	body, err := recording.Download(cmd.Context(), client, dlType, uuid)
 	if err != nil {
 		return err
 	}

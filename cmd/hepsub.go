@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -12,9 +11,10 @@ import (
 )
 
 var hepsubCmd = &cobra.Command{
-	Use:   "hepsub",
-	Short: "Manage HEP subscriptions",
-	Long:  "List, create, update, delete, and search HEP subscriptions.",
+	Use:     "hepsub",
+	Short:   "Manage HEP subscriptions",
+	Long:    "List, create, update, delete, and search HEP subscriptions.",
+	GroupID: "config",
 }
 
 var hepsubListCmd = &cobra.Command{
@@ -25,7 +25,7 @@ var hepsubListCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.ListHepsub(context.Background(), client)
+		result, err := config_resources.ListHepsub(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -63,7 +63,7 @@ var hepsubCreateCmd = &cobra.Command{
 			}
 		}
 
-		result, err := config_resources.CreateHepsub(context.Background(), client, data)
+		result, err := config_resources.CreateHepsub(cmd.Context(), client, data)
 		if err != nil {
 			return err
 		}
@@ -108,7 +108,7 @@ var hepsubUpdateCmd = &cobra.Command{
 			}
 		}
 
-		result, err := config_resources.UpdateHepsub(context.Background(), client, uuid, data)
+		result, err := config_resources.UpdateHepsub(cmd.Context(), client, uuid, data)
 		if err != nil {
 			return err
 		}
@@ -132,7 +132,7 @@ var hepsubDeleteCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.DeleteHepsub(context.Background(), client, args[0])
+		result, err := config_resources.DeleteHepsub(cmd.Context(), client, args[0])
 		if err != nil {
 			return err
 		}
@@ -158,7 +158,7 @@ var hepsubSearchCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.SearchHepsub(context.Background(), client, searchData)
+		result, err := config_resources.SearchHepsub(cmd.Context(), client, searchData)
 		if err != nil {
 			return err
 		}

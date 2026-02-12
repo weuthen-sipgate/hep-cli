@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/agent"
 	"hepic-cli/internal/api"
@@ -41,7 +40,7 @@ func runAgentSearch(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := agent.Search(context.Background(), client, guid, agentType)
+	result, err := agent.Search(cmd.Context(), client, guid, agentType)
 	if err != nil {
 		return err
 	}

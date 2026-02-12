@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -52,7 +51,7 @@ func runExportAction(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := export.ExportAction(context.Background(), client, actionType)
+	result, err := export.ExportAction(cmd.Context(), client, actionType)
 	if err != nil {
 		return err
 	}

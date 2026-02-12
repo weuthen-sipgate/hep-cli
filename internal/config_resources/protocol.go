@@ -11,7 +11,7 @@ import (
 // GET /protocol/search/{id}
 func SearchProtocol(ctx context.Context, client *api.Client, id string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/protocol/search/"+id, &result)
+	err := client.Get(ctx, "/protocol/search/"+api.PathEscape(id), &result)
 	return result, err
 }
 
@@ -19,7 +19,7 @@ func SearchProtocol(ctx context.Context, client *api.Client, id string) (json.Ra
 // POST /protocol/{id}
 func CreateProtocol(ctx context.Context, client *api.Client, id string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/protocol/"+id, data, &result)
+	err := client.Post(ctx, "/protocol/"+api.PathEscape(id), data, &result)
 	return result, err
 }
 
@@ -27,7 +27,7 @@ func CreateProtocol(ctx context.Context, client *api.Client, id string, data int
 // PUT /protocol/{uuid}
 func UpdateProtocol(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/protocol/"+uuid, data, &result)
+	err := client.Put(ctx, "/protocol/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
@@ -35,6 +35,6 @@ func UpdateProtocol(ctx context.Context, client *api.Client, uuid string, data i
 // DELETE /protocol/{uuid}
 func DeleteProtocol(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/protocol/"+uuid, &result)
+	err := client.Delete(ctx, "/protocol/"+api.PathEscape(uuid), &result)
 	return result, err
 }

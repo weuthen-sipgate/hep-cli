@@ -10,14 +10,18 @@ Abschluss-Story: End-to-End-Tests gegen echte API, Shell-Completion, Hilfe-Texte
 
 ## Aufgaben
 
-- [ ] Shell-Completion generieren (bash, zsh, fish) via `hepic completion bash|zsh|fish`
-- [ ] Hilfe-Texte fuer alle Commands pruefen und vervollstaendigen
-- [ ] `hepic --help` zeigt uebersichtliche Kommando-Gruppen
-- [ ] Manueller End-to-End-Test aller Kern-Workflows gegen echte API
-- [ ] Error-Messages pruefen: sind sie hilfreich und konsistent?
-- [ ] `go vet ./...` und `golangci-lint` ohne Fehler
-- [ ] Makefile mit Targets: build, test, lint, generate
-- [ ] CLAUDE.md final aktualisieren
+- [x] Shell-Completion generieren (bash, zsh, fish) via `hepic completion bash|zsh|fish`
+- [x] Hilfe-Texte fuer alle Commands pruefen und vervollstaendigen
+- [x] `hepic --help` zeigt uebersichtliche Kommando-Gruppen (5 Gruppen: Call Analysis, Data Management, Configuration, Monitoring & Statistics, Administration)
+- [ ] Manueller End-to-End-Test aller Kern-Workflows gegen echte API (erfordert echte API-Instanz)
+- [x] Error-Messages pruefen: sind sie hilfreich und konsistent?
+  - Doppelte Error-Ausgabe (output.PrintError + root Execute) behoben
+  - JSON-Escaping im Root-Error-Handler gefixt
+  - context.Background() durch cmd.Context() ersetzt (Signal-Cancellation)
+  - URL Path Encoding fuer alle User-Inputs hinzugefuegt
+- [x] `go vet ./...` und `golangci-lint` ohne Fehler
+- [x] Makefile mit Targets: build, test, lint, generate
+- [x] CLAUDE.md final aktualisieren
 
 ## Akzeptanzkriterien
 

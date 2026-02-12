@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -20,9 +19,8 @@ var userListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := user.List(context.Background(), client)
+		result, err := user.List(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

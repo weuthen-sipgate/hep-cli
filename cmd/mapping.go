@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -12,9 +11,10 @@ import (
 )
 
 var mappingCmd = &cobra.Command{
-	Use:   "mapping",
-	Short: "Manage protocol mappings",
-	Long:  "List, create, update, delete, and reset protocol mappings.",
+	Use:     "mapping",
+	Short:   "Manage protocol mappings",
+	Long:    "List, create, update, delete, and reset protocol mappings.",
+	GroupID: "config",
 }
 
 var mappingListCmd = &cobra.Command{
@@ -25,7 +25,7 @@ var mappingListCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.ListMappings(context.Background(), client)
+		result, err := config_resources.ListMappings(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -61,7 +61,7 @@ var mappingCreateCmd = &cobra.Command{
 			}
 		}
 
-		result, err := config_resources.CreateMapping(context.Background(), client, data)
+		result, err := config_resources.CreateMapping(cmd.Context(), client, data)
 		if err != nil {
 			return err
 		}
@@ -102,7 +102,7 @@ var mappingUpdateCmd = &cobra.Command{
 			}
 		}
 
-		result, err := config_resources.UpdateMapping(context.Background(), client, uuid, data)
+		result, err := config_resources.UpdateMapping(cmd.Context(), client, uuid, data)
 		if err != nil {
 			return err
 		}
@@ -126,7 +126,7 @@ var mappingDeleteCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.DeleteMapping(context.Background(), client, args[0])
+		result, err := config_resources.DeleteMapping(cmd.Context(), client, args[0])
 		if err != nil {
 			return err
 		}
@@ -142,7 +142,7 @@ var mappingProtocolsCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.ListAllProtocols(context.Background(), client)
+		result, err := config_resources.ListAllProtocols(cmd.Context(), client)
 		if err != nil {
 			return err
 		}
@@ -163,7 +163,7 @@ var mappingResetCmd = &cobra.Command{
 
 		if len(args) == 1 {
 			// Reset single mapping
-			result, err := config_resources.ResetOne(context.Background(), client, args[0])
+			result, err := config_resources.ResetOne(cmd.Context(), client, args[0])
 			if err != nil {
 				return err
 			}
@@ -178,7 +178,7 @@ var mappingResetCmd = &cobra.Command{
 			}
 		}
 
-		result, err := config_resources.ResetAll(context.Background(), client)
+		result, err := config_resources.ResetAll(cmd.Context(), client)
 		if err != nil {
 			return err
 		}

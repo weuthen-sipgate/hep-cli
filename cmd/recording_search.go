@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -37,7 +36,7 @@ func runRecordingSearch(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := recording.SearchData(context.Background(), client, params)
+	result, err := recording.SearchData(cmd.Context(), client, params)
 	if err != nil {
 		return err
 	}

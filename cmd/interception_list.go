@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -27,7 +26,7 @@ func runInterceptionList(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := recording.ListInterceptions(context.Background(), client)
+	result, err := recording.ListInterceptions(cmd.Context(), client)
 	if err != nil {
 		return err
 	}

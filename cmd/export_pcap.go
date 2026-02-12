@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"os"
 
@@ -54,7 +53,7 @@ func runExportPcap(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	body, err := export.ExportPCAPData(context.Background(), client, params)
+	body, err := export.ExportPCAPData(cmd.Context(), client, params)
 	if err != nil {
 		return err
 	}

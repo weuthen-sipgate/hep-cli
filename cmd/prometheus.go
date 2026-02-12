@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 
@@ -13,9 +12,10 @@ import (
 )
 
 var prometheusCmd = &cobra.Command{
-	Use:   "prometheus",
-	Short: "Query Prometheus metrics",
-	Long:  "Query Prometheus data, values, and labels via the HEPIC platform.",
+	Use:     "prometheus",
+	Short:   "Query Prometheus metrics",
+	Long:    "Query Prometheus data, values, and labels via the HEPIC platform.",
+	GroupID: "monitoring",
 }
 
 var prometheusQueryCmd = &cobra.Command{
@@ -41,9 +41,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.QueryData(context.Background(), client, data)
+		result, err := statistic.QueryData(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -74,9 +73,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.QueryValue(context.Background(), client, data)
+		result, err := statistic.QueryValue(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -94,9 +92,8 @@ var prometheusLabelsCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.Labels(context.Background(), client)
+		result, err := statistic.Labels(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -120,9 +117,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.LabelDetail(context.Background(), client, label)
+		result, err := statistic.LabelDetail(cmd.Context(), client, label)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

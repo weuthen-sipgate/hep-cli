@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -12,9 +11,10 @@ import (
 )
 
 var protocolCmd = &cobra.Command{
-	Use:   "protocol",
-	Short: "Manage protocol definitions",
-	Long:  "Search, create, update, and delete protocol definitions.",
+	Use:     "protocol",
+	Short:   "Manage protocol definitions",
+	Long:    "Search, create, update, and delete protocol definitions.",
+	GroupID: "config",
 }
 
 var protocolSearchCmd = &cobra.Command{
@@ -26,7 +26,7 @@ var protocolSearchCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.SearchProtocol(context.Background(), client, args[0])
+		result, err := config_resources.SearchProtocol(cmd.Context(), client, args[0])
 		if err != nil {
 			return err
 		}
@@ -53,7 +53,7 @@ var protocolCreateCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.CreateProtocol(context.Background(), client, args[0], data)
+		result, err := config_resources.CreateProtocol(cmd.Context(), client, args[0], data)
 		if err != nil {
 			return err
 		}
@@ -80,7 +80,7 @@ var protocolUpdateCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.UpdateProtocol(context.Background(), client, args[0], data)
+		result, err := config_resources.UpdateProtocol(cmd.Context(), client, args[0], data)
 		if err != nil {
 			return err
 		}
@@ -104,7 +104,7 @@ var protocolDeleteCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		result, err := config_resources.DeleteProtocol(context.Background(), client, args[0])
+		result, err := config_resources.DeleteProtocol(cmd.Context(), client, args[0])
 		if err != nil {
 			return err
 		}

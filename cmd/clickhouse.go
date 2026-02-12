@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/admin"
 	"hepic-cli/internal/api"
@@ -11,9 +10,10 @@ import (
 )
 
 var clickhouseCmd = &cobra.Command{
-	Use:   "clickhouse",
-	Short: "ClickHouse database operations",
-	Long:  "Execute queries against the ClickHouse database backend.",
+	Use:     "clickhouse",
+	Short:   "ClickHouse database operations",
+	Long:    "Execute queries against the ClickHouse database backend.",
+	GroupID: "admin",
 }
 
 var clickhouseQueryCmd = &cobra.Command{
@@ -35,9 +35,8 @@ Examples:
 			return err
 		}
 
-		result, err := admin.ClickhouseQuery(context.Background(), client, query)
+		result, err := admin.ClickhouseQuery(cmd.Context(), client, query)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

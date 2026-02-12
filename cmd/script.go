@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -16,8 +15,9 @@ import (
 )
 
 var scriptCmd = &cobra.Command{
-	Use:   "script",
-	Short: "Manage scripts",
+	Use:     "script",
+	Short:   "Manage scripts",
+	GroupID: "data",
 	Long:  "Create, list, update, and delete scripts on the HEPIC platform.",
 }
 
@@ -31,9 +31,8 @@ var scriptListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := script.List(context.Background(), client)
+		result, err := script.List(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -58,9 +57,8 @@ var scriptCreateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := script.Create(context.Background(), client, data)
+		result, err := script.Create(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -87,9 +85,8 @@ var scriptUpdateCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := script.Update(context.Background(), client, uuid, data)
+		result, err := script.Update(cmd.Context(), client, uuid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -123,9 +120,8 @@ var scriptDeleteCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := script.Delete(context.Background(), client, uuid)
+		result, err := script.Delete(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -29,9 +28,8 @@ var userPasswordCmd = &cobra.Command{
 			"password": password,
 		}
 
-		result, err := user.UpdatePassword(context.Background(), client, uuid, data)
+		result, err := user.UpdatePassword(cmd.Context(), client, uuid, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

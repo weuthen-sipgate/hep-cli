@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/admin"
 	"hepic-cli/internal/api"
@@ -11,9 +10,10 @@ import (
 )
 
 var troubleshootingCmd = &cobra.Command{
-	Use:   "troubleshooting",
-	Short: "Troubleshooting and diagnostics",
-	Long:  "Access troubleshooting logs and diagnostic information from the HEPIC platform.",
+	Use:     "troubleshooting",
+	Short:   "Troubleshooting and diagnostics",
+	Long:    "Access troubleshooting logs and diagnostic information from the HEPIC platform.",
+	GroupID: "admin",
 }
 
 var troubleshootingLogCmd = &cobra.Command{
@@ -36,9 +36,8 @@ Examples:
 			return err
 		}
 
-		result, err := admin.TroubleshootingLog(context.Background(), client, logType, action)
+		result, err := admin.TroubleshootingLog(cmd.Context(), client, logType, action)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

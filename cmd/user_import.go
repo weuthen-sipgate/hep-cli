@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -22,9 +21,8 @@ var userImportCmd = &cobra.Command{
 
 		filePath, _ := cmd.Flags().GetString("file")
 
-		result, err := user.Import(context.Background(), client, filePath)
+		result, err := user.Import(cmd.Context(), client, filePath)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

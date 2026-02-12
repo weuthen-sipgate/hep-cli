@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -15,9 +14,10 @@ import (
 )
 
 var adminCmd = &cobra.Command{
-	Use:   "admin",
-	Short: "Admin operations and system information",
-	Long:  "Manage admin profiles, config database, and view system version information.",
+	Use:     "admin",
+	Short:   "Admin operations and system information",
+	Long:    "Manage admin profiles, config database, and view system version information.",
+	GroupID: "admin",
 }
 
 var adminProfilesCmd = &cobra.Command{
@@ -30,9 +30,8 @@ var adminProfilesCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.Profiles(context.Background(), client)
+		result, err := admin.Profiles(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -50,9 +49,8 @@ var adminConfigDBCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ConfigDBTables(context.Background(), client)
+		result, err := admin.ConfigDBTables(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -84,9 +82,8 @@ var adminResyncCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := admin.ConfigDBResync(context.Background(), client)
+		result, err := admin.ConfigDBResync(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -104,15 +101,13 @@ var adminVersionCmd = &cobra.Command{
 			return err
 		}
 
-		apiVersion, err := admin.APIVersion(context.Background(), client)
+		apiVersion, err := admin.APIVersion(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
-		uiVersion, err := admin.UIVersion(context.Background(), client)
+		uiVersion, err := admin.UIVersion(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

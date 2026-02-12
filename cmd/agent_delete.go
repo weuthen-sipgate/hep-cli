@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -56,7 +55,7 @@ func runAgentDelete(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := agent.Delete(context.Background(), client, uuid)
+	result, err := agent.Delete(cmd.Context(), client, uuid)
 	if err != nil {
 		return err
 	}

@@ -29,7 +29,7 @@ func CreateInterception(ctx context.Context, client *api.Client, data models.Int
 // UpdateInterception performs a PUT to /interceptions/{uuid} to update an interception.
 func UpdateInterception(ctx context.Context, client *api.Client, uuid string, data models.InterceptionsStruct) (json.RawMessage, error) {
 	var result json.RawMessage
-	if err := client.Put(ctx, "/interceptions/"+uuid, data, &result); err != nil {
+	if err := client.Put(ctx, "/interceptions/"+api.PathEscape(uuid), data, &result); err != nil {
 		return nil, err
 	}
 	return result, nil
@@ -38,7 +38,7 @@ func UpdateInterception(ctx context.Context, client *api.Client, uuid string, da
 // DeleteInterception performs a DELETE to /interceptions/{uuid} to remove an interception.
 func DeleteInterception(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	if err := client.Delete(ctx, "/interceptions/"+uuid, &result); err != nil {
+	if err := client.Delete(ctx, "/interceptions/"+api.PathEscape(uuid), &result); err != nil {
 		return nil, err
 	}
 	return result, nil

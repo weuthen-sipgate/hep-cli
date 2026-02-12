@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -11,9 +10,10 @@ import (
 )
 
 var databaseCmd = &cobra.Command{
-	Use:   "database",
-	Short: "Manage database nodes",
-	Long:  "Query database node information from the HEPIC platform.",
+	Use:     "database",
+	Short:   "Manage database nodes",
+	Long:    "Query database node information from the HEPIC platform.",
+	GroupID: "admin",
 }
 
 var databaseNodesCmd = &cobra.Command{
@@ -26,9 +26,8 @@ var databaseNodesCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.NodeList(context.Background(), client)
+		result, err := statistic.NodeList(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

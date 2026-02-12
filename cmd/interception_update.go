@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 
 	"hepic-cli/internal/api"
@@ -71,7 +70,7 @@ func runInterceptionUpdate(cmd *cobra.Command, args []string) error {
 		data.StopDate = v
 	}
 
-	result, err := recording.UpdateInterception(context.Background(), client, uuid, data)
+	result, err := recording.UpdateInterception(cmd.Context(), client, uuid, data)
 	if err != nil {
 		return err
 	}

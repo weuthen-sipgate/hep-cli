@@ -5,9 +5,10 @@ import (
 )
 
 var tokenCmd = &cobra.Command{
-	Use:   "token",
-	Short: "Manage API authentication tokens",
-	Long:  "Create, list, and delete API authentication tokens for the HEPIC platform.",
+	Use:     "token",
+	Short:   "Manage API authentication tokens",
+	Long:    "Create, list, and delete API authentication tokens for the HEPIC platform.",
+	GroupID: "admin",
 }
 
 func init() {

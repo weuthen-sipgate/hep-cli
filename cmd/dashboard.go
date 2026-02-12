@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 
@@ -13,9 +12,10 @@ import (
 )
 
 var dashboardCmd = &cobra.Command{
-	Use:   "dashboard",
-	Short: "Manage dashboards",
-	Long:  "List, update, and delete dashboards on the HEPIC platform.",
+	Use:     "dashboard",
+	Short:   "Manage dashboards",
+	Long:    "List, update, and delete dashboards on the HEPIC platform.",
+	GroupID: "data",
 }
 
 var dashboardListCmd = &cobra.Command{
@@ -28,9 +28,8 @@ var dashboardListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := dashboard.List(context.Background(), client)
+		result, err := dashboard.List(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -63,9 +62,8 @@ Examples:
 			return err
 		}
 
-		result, err := dashboard.Store(context.Background(), client, dashboardID, data)
+		result, err := dashboard.Store(cmd.Context(), client, dashboardID, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -94,9 +92,8 @@ Examples:
 			return err
 		}
 
-		result, err := dashboard.Delete(context.Background(), client, dashboardID)
+		result, err := dashboard.Delete(cmd.Context(), client, dashboardID)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

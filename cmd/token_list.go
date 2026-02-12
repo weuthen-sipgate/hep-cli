@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -20,9 +19,8 @@ var tokenListCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := user.AuthTypes(context.Background(), client)
+		result, err := user.AuthTypes(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

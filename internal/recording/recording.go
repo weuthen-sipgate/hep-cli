@@ -81,19 +81,19 @@ func SearchData(ctx context.Context, client *api.Client, params SearchParams) (j
 
 // Play performs a GET to /call/recording/play/{uuid} and returns the raw stream.
 func Play(ctx context.Context, client *api.Client, uuid string) (io.ReadCloser, error) {
-	return client.GetRaw(ctx, "/call/recording/play/"+uuid)
+	return client.GetRaw(ctx, "/call/recording/play/"+api.PathEscape(uuid))
 }
 
 // Download performs a GET to /call/recording/download/{type}/{uuid} and returns the raw stream.
 // dlType should be "audio" or "pcap".
 func Download(ctx context.Context, client *api.Client, dlType, uuid string) (io.ReadCloser, error) {
-	return client.GetRaw(ctx, "/call/recording/download/"+dlType+"/"+uuid)
+	return client.GetRaw(ctx, "/call/recording/download/"+api.PathEscape(dlType)+"/"+api.PathEscape(uuid))
 }
 
 // Info performs a GET to /call/recording/info/{uuid} and returns recording metadata.
 func Info(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	if err := client.Get(ctx, "/call/recording/info/"+uuid, &result); err != nil {
+	if err := client.Get(ctx, "/call/recording/info/"+api.PathEscape(uuid), &result); err != nil {
 		return nil, err
 	}
 	return result, nil

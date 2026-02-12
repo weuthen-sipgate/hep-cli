@@ -149,4 +149,4 @@ Die Stories liegen im Verzeichnis `plan/`. Siehe [plan/README.md](plan/README.md
 | 10 | [Agent Management](plan/10-agent-management.md) | done |
 | 11 | [Dashboard & Statistiken](plan/11-dashboard-and-statistics.md) | done |
 | 12 | [Admin, Scripts & Rest](plan/12-admin-and-remaining.md) | done |
-| 13 | [Integration & Polish](plan/13-integration-and-polish.md) | offen |
+| 13 | [Integration & Polish](plan/13-integration-and-polish.md) | done |

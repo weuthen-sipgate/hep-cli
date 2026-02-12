@@ -31,21 +31,21 @@ func Create(ctx context.Context, client *api.Client, data interface{}) (json.Raw
 // Update updates an existing user. PUT /users/{uuid}
 func Update(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/users/"+uuid, data, &result)
+	err := client.Put(ctx, "/users/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 
 // Delete deletes a user. DELETE /users/{uuid}
 func Delete(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Delete(ctx, "/users/"+uuid, &result)
+	err := client.Delete(ctx, "/users/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
 // UpdatePassword changes a user's password. PUT /users/update/password/{uuid}
 func UpdatePassword(ctx context.Context, client *api.Client, uuid string, data interface{}) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Put(ctx, "/users/update/password/"+uuid, data, &result)
+	err := client.Put(ctx, "/users/update/password/"+api.PathEscape(uuid), data, &result)
 	return result, err
 }
 

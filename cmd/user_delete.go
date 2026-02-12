@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -40,9 +39,8 @@ var userDeleteCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := user.Delete(context.Background(), client, uuid)
+		result, err := user.Delete(cmd.Context(), client, uuid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

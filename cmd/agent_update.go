@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 
@@ -47,7 +46,7 @@ func runAgentUpdate(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	result, err := agent.Update(context.Background(), client, uuid, data)
+	result, err := agent.Update(cmd.Context(), client, uuid, data)
 	if err != nil {
 		return err
 	}

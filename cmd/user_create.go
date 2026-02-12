@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -40,9 +39,8 @@ var userCreateCmd = &cobra.Command{
 			"partid":     partid,
 		}
 
-		result, err := user.Create(context.Background(), client, data)
+		result, err := user.Create(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

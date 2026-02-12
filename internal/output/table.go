@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"sort"
 )
 
 // TableFormatter outputs data as aligned text columns (lists) or key-value pairs (single objects).
@@ -112,13 +113,7 @@ func orderedKeys(m map[string]interface{}) []string {
 	for k := range m {
 		keys = append(keys, k)
 	}
-	for i := 0; i < len(keys); i++ {
-		for j := i + 1; j < len(keys); j++ {
-			if keys[i] > keys[j] {
-				keys[i], keys[j] = keys[j], keys[i]
-			}
-		}
-	}
+	sort.Strings(keys)
 	return keys
 }
 

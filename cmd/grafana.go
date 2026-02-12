@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -11,9 +10,10 @@ import (
 )
 
 var grafanaCmd = &cobra.Command{
-	Use:   "grafana",
-	Short: "Interact with Grafana via proxy",
-	Long:  "Retrieve Grafana dashboards, folders, organization info, and status via the HEPIC proxy.",
+	Use:     "grafana",
+	Short:   "Interact with Grafana via proxy",
+	Long:    "Retrieve Grafana dashboards, folders, organization info, and status via the HEPIC proxy.",
+	GroupID: "monitoring",
 }
 
 var grafanaDashboardCmd = &cobra.Command{
@@ -32,9 +32,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.GetDashboard(context.Background(), client, uid)
+		result, err := statistic.GetDashboard(cmd.Context(), client, uid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -52,9 +51,8 @@ var grafanaFoldersCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.Folders(context.Background(), client)
+		result, err := statistic.Folders(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -72,9 +70,8 @@ var grafanaOrgCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.Org(context.Background(), client)
+		result, err := statistic.Org(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -98,9 +95,8 @@ Examples:
 			return err
 		}
 
-		result, err := statistic.SearchDashboard(context.Background(), client, uid)
+		result, err := statistic.SearchDashboard(cmd.Context(), client, uid)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 
@@ -118,9 +114,8 @@ var grafanaStatusCmd = &cobra.Command{
 			return err
 		}
 
-		result, err := statistic.Status(context.Background(), client)
+		result, err := statistic.Status(cmd.Context(), client)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 
 	"hepic-cli/internal/api"
 	"hepic-cli/internal/output"
@@ -26,9 +25,8 @@ var tokenCreateCmd = &cobra.Command{
 			"name": name,
 		}
 
-		result, err := user.CreateToken(context.Background(), client, data)
+		result, err := user.CreateToken(cmd.Context(), client, data)
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

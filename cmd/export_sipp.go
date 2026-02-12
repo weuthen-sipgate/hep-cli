@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"os"
 
@@ -54,7 +53,7 @@ func runExportSipp(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	body, err := export.ExportSIPP(context.Background(), client, params)
+	body, err := export.ExportSIPP(cmd.Context(), client, params)
 	if err != nil {
 		return err
 	}

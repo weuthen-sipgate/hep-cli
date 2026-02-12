@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"context"
 	"fmt"
 	"os"
 
@@ -13,9 +12,10 @@ import (
 )
 
 var importCmd = &cobra.Command{
-	Use:   "import",
-	Short: "Import data into the HEPIC platform",
-	Long:  "Import data files (e.g., PCAP captures) into the HEPIC platform.",
+	Use:     "import",
+	Short:   "Import data into the HEPIC platform",
+	Long:    "Import data files (e.g., PCAP captures) into the HEPIC platform.",
+	GroupID: "data",
 }
 
 var importPcapCmd = &cobra.Command{
@@ -44,12 +44,11 @@ Examples:
 
 		var result interface{}
 		if now {
-			result, err = admin.ImportPCAPNow(context.Background(), client, filePath)
+			result, err = admin.ImportPCAPNow(cmd.Context(), client, filePath)
 		} else {
-			result, err = admin.ImportPCAP(context.Background(), client, filePath)
+			result, err = admin.ImportPCAP(cmd.Context(), client, filePath)
 		}
 		if err != nil {
-			output.PrintError(err)
 			return err
 		}
 

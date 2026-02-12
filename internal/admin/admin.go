@@ -46,7 +46,7 @@ func UIVersion(ctx context.Context, client *api.Client) (json.RawMessage, error)
 // TroubleshootingLog retrieves troubleshooting logs. GET /troubleshooting/log/{type}/{action}
 func TroubleshootingLog(ctx context.Context, client *api.Client, logType, action string) (json.RawMessage, error) {
 	var result json.RawMessage
-	path := fmt.Sprintf("/troubleshooting/log/%s/%s", logType, action)
+	path := fmt.Sprintf("/troubleshooting/log/%s/%s", api.PathEscape(logType), api.PathEscape(action))
 	err := client.Get(ctx, path, &result)
 	return result, err
 }
@@ -76,7 +76,7 @@ func ClickhouseQuery(ctx context.Context, client *api.Client, query string) (jso
 // ShareReport shares a call report. POST /share/call/report/{type}/{uuid}
 func ShareReport(ctx context.Context, client *api.Client, reportType, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	path := fmt.Sprintf("/share/call/report/%s/%s", reportType, uuid)
+	path := fmt.Sprintf("/share/call/report/%s/%s", api.PathEscape(reportType), api.PathEscape(uuid))
 	err := client.Post(ctx, path, nil, &result)
 	return result, err
 }
@@ -84,34 +84,34 @@ func ShareReport(ctx context.Context, client *api.Client, reportType, uuid strin
 // ShareTransaction shares a call transaction. POST /share/call/transaction/{uuid}
 func ShareTransaction(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/share/call/transaction/"+uuid, nil, &result)
+	err := client.Post(ctx, "/share/call/transaction/"+api.PathEscape(uuid), nil, &result)
 	return result, err
 }
 
 // SharePCAP shares a PCAP export. POST /share/export/call/messages/pcap/{uuid}
 func SharePCAP(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/share/export/call/messages/pcap/"+uuid, nil, &result)
+	err := client.Post(ctx, "/share/export/call/messages/pcap/"+api.PathEscape(uuid), nil, &result)
 	return result, err
 }
 
 // ShareText shares a text export. POST /share/export/call/messages/text/{uuid}
 func ShareText(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Post(ctx, "/share/export/call/messages/text/"+uuid, nil, &result)
+	err := client.Post(ctx, "/share/export/call/messages/text/"+api.PathEscape(uuid), nil, &result)
 	return result, err
 }
 
 // ShareIPAlias retrieves a shared IP alias. GET /share/ipalias/{uuid}
 func ShareIPAlias(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/share/ipalias/"+uuid, &result)
+	err := client.Get(ctx, "/share/ipalias/"+api.PathEscape(uuid), &result)
 	return result, err
 }
 
 // ShareMapping retrieves a shared mapping. GET /share/mapping/protocol/{uuid}
 func ShareMapping(ctx context.Context, client *api.Client, uuid string) (json.RawMessage, error) {
 	var result json.RawMessage
-	err := client.Get(ctx, "/share/mapping/protocol/"+uuid, &result)
+	err := client.Get(ctx, "/share/mapping/protocol/"+api.PathEscape(uuid), &result)
 	return result, err
 }
