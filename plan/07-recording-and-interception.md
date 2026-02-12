@@ -26,17 +26,17 @@ Verwaltung von Call-Aufnahmen (Suche, Abspielen, Download) und aktiven Intercept
 
 ## Aufgaben
 
-- [ ] `internal/recording/recording.go` -- Recording-Funktionen
-- [ ] `internal/recording/interception.go` -- Interception-CRUD
-- [ ] `cmd/recording.go` -- `hepic recording` Parent-Command
-- [ ] `cmd/recording_search.go` -- `hepic recording search --from --to`
-- [ ] `cmd/recording_info.go` -- `hepic recording info <uuid>`
-- [ ] `cmd/recording_download.go` -- `hepic recording download <uuid> -o file.wav`
-- [ ] `cmd/interception.go` -- `hepic interception` Parent-Command
-- [ ] `cmd/interception_list.go` -- `hepic interception list`
-- [ ] `cmd/interception_create.go` -- `hepic interception create --caller X --callee Y`
-- [ ] `cmd/interception_update.go` -- `hepic interception update <uuid> [flags]`
-- [ ] `cmd/interception_delete.go` -- `hepic interception delete <uuid>`
+- [x] `internal/recording/recording.go` -- Recording-Funktionen
+- [x] `internal/recording/interception.go` -- Interception-CRUD
+- [x] `cmd/recording.go` -- `hepic recording` Parent-Command
+- [x] `cmd/recording_search.go` -- `hepic recording search --from --to`
+- [x] `cmd/recording_info.go` -- `hepic recording info <uuid>`
+- [x] `cmd/recording_download.go` -- `hepic recording download <uuid> -o file.wav`
+- [x] `cmd/interception.go` -- `hepic interception` Parent-Command
+- [x] `cmd/interception_list.go` -- `hepic interception list`
+- [x] `cmd/interception_create.go` -- `hepic interception create --caller X --callee Y`
+- [x] `cmd/interception_update.go` -- `hepic interception update <uuid> [flags]`
+- [x] `cmd/interception_delete.go` -- `hepic interception delete <uuid>`
 
 ## Akzeptanzkriterien
 

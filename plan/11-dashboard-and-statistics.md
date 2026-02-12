@@ -41,15 +41,15 @@ Dashboard-Verwaltung, Statistik-Abfragen, Prometheus-Metriken und Grafana-Proxy.
 
 ## Aufgaben
 
-- [ ] `internal/dashboard/dashboard.go` -- Dashboard CRUD
-- [ ] `internal/statistic/statistic.go` -- Statistik-Abfragen
-- [ ] `internal/statistic/prometheus.go` -- Prometheus-Integration
-- [ ] `internal/statistic/grafana.go` -- Grafana-Proxy
-- [ ] `cmd/dashboard.go` -- `hepic dashboard list|get|update|delete`
-- [ ] `cmd/statistic.go` -- `hepic statistic db|data|metrics|measurements|retentions`
-- [ ] `cmd/prometheus.go` -- `hepic prometheus query|value|labels`
-- [ ] `cmd/grafana.go` -- `hepic grafana dashboard|folders|org|status`
-- [ ] `cmd/database.go` -- `hepic database nodes`
+- [x] `internal/dashboard/dashboard.go` -- Dashboard CRUD
+- [x] `internal/statistic/statistic.go` -- Statistik-Abfragen
+- [x] `internal/statistic/prometheus.go` -- Prometheus-Integration
+- [x] `internal/statistic/grafana.go` -- Grafana-Proxy
+- [x] `cmd/dashboard.go` -- `hepic dashboard list|get|update|delete`
+- [x] `cmd/statistic.go` -- `hepic statistic db|data|metrics|measurements|retentions`
+- [x] `cmd/prometheus.go` -- `hepic prometheus query|value|labels`
+- [x] `cmd/grafana.go` -- `hepic grafana dashboard|folders|org|status`
+- [x] `cmd/database.go` -- `hepic database nodes`
 
 ## Akzeptanzkriterien
 

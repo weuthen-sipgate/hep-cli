@@ -141,12 +141,12 @@ Die Stories liegen im Verzeichnis `plan/`. Siehe [plan/README.md](plan/README.md
 | 02 | [Config & Init](plan/02-config-and-init.md) | done |
 | 03 | [HTTP-Client & Output](plan/03-api-client-and-output.md) | done |
 | 04 | [Model-Generierung](plan/04-models-generation.md) | done |
-| 05 | [Call Search & Transaction](plan/05-call-search-and-transaction.md) | offen |
-| 06 | [Call Export](plan/06-export.md) | offen |
-| 07 | [Recording & Interception](plan/07-recording-and-interception.md) | offen |
-| 08 | [User Management](plan/08-user-management.md) | offen |
-| 09 | [Netzwerk-Konfiguration](plan/09-network-config.md) | offen |
-| 10 | [Agent Management](plan/10-agent-management.md) | offen |
-| 11 | [Dashboard & Statistiken](plan/11-dashboard-and-statistics.md) | offen |
-| 12 | [Admin, Scripts & Rest](plan/12-admin-and-remaining.md) | offen |
+| 05 | [Call Search & Transaction](plan/05-call-search-and-transaction.md) | done |
+| 06 | [Call Export](plan/06-export.md) | done |
+| 07 | [Recording & Interception](plan/07-recording-and-interception.md) | done |
+| 08 | [User Management](plan/08-user-management.md) | done |
+| 09 | [Netzwerk-Konfiguration](plan/09-network-config.md) | done |
+| 10 | [Agent Management](plan/10-agent-management.md) | done |
+| 11 | [Dashboard & Statistiken](plan/11-dashboard-and-statistics.md) | done |
+| 12 | [Admin, Scripts & Rest](plan/12-admin-and-remaining.md) | done |
 | 13 | [Integration & Polish](plan/13-integration-and-polish.md) | offen |

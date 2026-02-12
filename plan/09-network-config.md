@@ -47,14 +47,14 @@ Verwaltung der Netzwerk-Konfigurationsressourcen: IP-Aliase, HEP-Subscriptions, 
 
 ## Aufgaben
 
-- [ ] `internal/config_resources/ipalias.go` -- IP-Alias CRUD + Import/Export
-- [ ] `internal/config_resources/hepsub.go` -- HEPSub CRUD + Search
-- [ ] `internal/config_resources/mapping.go` -- Mapping CRUD + Reset
-- [ ] `internal/config_resources/protocol.go` -- Protocol CRUD
-- [ ] `cmd/ipalias.go` -- `hepic ipalias list|create|update|delete|import|export`
-- [ ] `cmd/hepsub.go` -- `hepic hepsub list|create|update|delete|search`
-- [ ] `cmd/mapping.go` -- `hepic mapping list|create|update|delete|reset`
-- [ ] `cmd/protocol.go` -- `hepic protocol search|create|update|delete`
+- [x] `internal/config_resources/ipalias.go` -- IP-Alias CRUD + Import/Export
+- [x] `internal/config_resources/hepsub.go` -- HEPSub CRUD + Search
+- [x] `internal/config_resources/mapping.go` -- Mapping CRUD + Reset
+- [x] `internal/config_resources/protocol.go` -- Protocol CRUD
+- [x] `cmd/ipalias.go` -- `hepic ipalias list|create|update|delete|import|export`
+- [x] `cmd/hepsub.go` -- `hepic hepsub list|create|update|delete|search`
+- [x] `cmd/mapping.go` -- `hepic mapping list|create|update|delete|reset`
+- [x] `cmd/protocol.go` -- `hepic protocol search|create|update|delete`
 
 ## Akzeptanzkriterien
 

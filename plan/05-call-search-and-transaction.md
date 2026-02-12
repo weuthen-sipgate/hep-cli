@@ -23,15 +23,15 @@ Kernfunktionalitaet: SIP-Calls suchen, Transaktionsdetails abrufen und Call-Repo
 
 ## Aufgaben
 
-- [ ] `internal/call/search.go` -- Search-Funktionen
-- [ ] `internal/call/transaction.go` -- Transaction-Funktionen
-- [ ] `internal/call/report.go` -- Report-Funktionen (DTMF, Log, QoS)
-- [ ] `cmd/call.go` -- `hepic call` Parent-Command
-- [ ] `cmd/call_search.go` -- `hepic call search` mit Filtern (--from, --to, --caller, --callee, --call-id)
-- [ ] `cmd/call_message.go` -- `hepic call message`
-- [ ] `cmd/call_decode.go` -- `hepic call decode`
-- [ ] `cmd/call_transaction.go` -- `hepic call transaction`
-- [ ] `cmd/call_report.go` -- `hepic call report dtmf|log|qos`
+- [x] `internal/call/search.go` -- Search-Funktionen
+- [x] `internal/call/transaction.go` -- Transaction-Funktionen
+- [x] `internal/call/report.go` -- Report-Funktionen (DTMF, Log, QoS)
+- [x] `cmd/call.go` -- `hepic call` Parent-Command
+- [x] `cmd/call_search.go` -- `hepic call search` mit Filtern (--from, --to, --caller, --callee, --call-id)
+- [x] `cmd/call_message.go` -- `hepic call message`
+- [x] `cmd/call_decode.go` -- `hepic call decode`
+- [x] `cmd/call_transaction.go` -- `hepic call transaction`
+- [x] `cmd/call_report.go` -- `hepic call report dtmf|log|qos`
 
 ## Akzeptanzkriterien
 

@@ -6,8 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"mime/multipart"
 	"net/http"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/spf13/viper"
@@ -105,6 +107,60 @@ func (c *Client) PostRaw(ctx context.Context, path string, body interface{}) (io
 		return nil, c.parseError(resp)
 	}
 	return resp.Body, nil
+}
+
+// PostFormFile uploads a file via multipart/form-data POST request.
+func (c *Client) PostFormFile(ctx context.Context, path, fieldName, filePath string, result interface{}) error {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return fmt.Errorf("failed to open file: %w", err)
+	}
+	defer f.Close()
+
+	var buf bytes.Buffer
+	writer := multipart.NewWriter(&buf)
+	part, err := writer.CreateFormFile(fieldName, filepath.Base(filePath))
+	if err != nil {
+		return fmt.Errorf("failed to create form file: %w", err)
+	}
+	if _, err := io.Copy(part, f); err != nil {
+		return fmt.Errorf("failed to copy file content: %w", err)
+	}
+	writer.Close()
+
+	url := c.BaseURL + path
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, &buf)
+	if err != nil {
+		return fmt.Errorf("failed to create request: %w", err)
+	}
+	req.Header.Set("Auth-Token", c.Token)
+	req.Header.Set("Content-Type", writer.FormDataContentType())
+	req.Header.Set("Accept", "application/json")
+
+	if c.Verbose {
+		fmt.Fprintf(os.Stderr, "[verbose] POST %s (multipart file: %s)\n", url, filePath)
+	}
+
+	resp, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if c.Verbose {
+		fmt.Fprintf(os.Stderr, "[verbose] POST %s → %d\n", url, resp.StatusCode)
+	}
+
+	if resp.StatusCode >= 400 {
+		return c.parseError(resp)
+	}
+
+	if result != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
+			return fmt.Errorf("failed to decode response: %w", err)
+		}
+	}
+	return nil
 }
 
 func (c *Client) do(ctx context.Context, method, path string, body interface{}, result interface{}) error {

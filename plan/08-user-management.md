@@ -30,21 +30,21 @@ Benutzerverwaltung (CRUD, Import/Export, Gruppen) und API-Token-Verwaltung.
 
 ## Aufgaben
 
-- [ ] `internal/user/user.go` -- User-CRUD-Funktionen
-- [ ] `internal/user/token.go` -- Token-Funktionen
-- [ ] `cmd/user.go` -- `hepic user` Parent-Command
-- [ ] `cmd/user_list.go` -- `hepic user list`
-- [ ] `cmd/user_create.go` -- `hepic user create --name X --email Y --password Z`
-- [ ] `cmd/user_update.go` -- `hepic user update <uuid> [flags]`
-- [ ] `cmd/user_delete.go` -- `hepic user delete <uuid>`
-- [ ] `cmd/user_password.go` -- `hepic user password <uuid>`
-- [ ] `cmd/user_import.go` -- `hepic user import --file users.csv`
-- [ ] `cmd/user_export.go` -- `hepic user export -o users.csv`
-- [ ] `cmd/user_groups.go` -- `hepic user groups`
-- [ ] `cmd/token.go` -- `hepic token` Parent-Command
-- [ ] `cmd/token_create.go` -- `hepic token create --name X`
-- [ ] `cmd/token_list.go` -- `hepic token list`
-- [ ] `cmd/token_delete.go` -- `hepic token delete <uuid>`
+- [x] `internal/user/user.go` -- User-CRUD-Funktionen
+- [x] `internal/user/token.go` -- Token-Funktionen
+- [x] `cmd/user.go` -- `hepic user` Parent-Command
+- [x] `cmd/user_list.go` -- `hepic user list`
+- [x] `cmd/user_create.go` -- `hepic user create --name X --email Y --password Z`
+- [x] `cmd/user_update.go` -- `hepic user update <uuid> [flags]`
+- [x] `cmd/user_delete.go` -- `hepic user delete <uuid>`
+- [x] `cmd/user_password.go` -- `hepic user password <uuid>`
+- [x] `cmd/user_import.go` -- `hepic user import --file users.csv`
+- [x] `cmd/user_export.go` -- `hepic user export -o users.csv`
+- [x] `cmd/user_groups.go` -- `hepic user groups`
+- [x] `cmd/token.go` -- `hepic token` Parent-Command
+- [x] `cmd/token_create.go` -- `hepic token create --name X`
+- [x] `cmd/token_list.go` -- `hepic token list`
+- [x] `cmd/token_delete.go` -- `hepic token delete <uuid>`
 
 ## Akzeptanzkriterien
 

@@ -22,15 +22,15 @@ Export von Call-Daten in verschiedenen Formaten: PCAP, SIPp, Text, sowie Transak
 
 ## Aufgaben
 
-- [ ] `internal/export/export.go` -- Export-Funktionen
-- [ ] `cmd/export.go` -- `hepic export` Parent-Command
-- [ ] `cmd/export_pcap.go` -- `hepic export pcap --call-id <id> -o file.pcap`
-- [ ] `cmd/export_sipp.go` -- `hepic export sipp --call-id <id> -o file.xml`
-- [ ] `cmd/export_text.go` -- `hepic export text --call-id <id>`
-- [ ] `cmd/export_report.go` -- `hepic export report --call-id <id>`
-- [ ] `cmd/export_archive.go` -- `hepic export archive --call-id <id> -o file.tar.gz`
-- [ ] `cmd/export_action.go` -- `hepic export action <type>`
-- [ ] Binaere Responses (PCAP) korrekt in Datei schreiben statt auf stdout
+- [x] `internal/export/export.go` -- Export-Funktionen
+- [x] `cmd/export.go` -- `hepic export` Parent-Command
+- [x] `cmd/export_pcap.go` -- `hepic export pcap --call-id <id> -o file.pcap`
+- [x] `cmd/export_sipp.go` -- `hepic export sipp --call-id <id> -o file.xml`
+- [x] `cmd/export_text.go` -- `hepic export text --call-id <id>`
+- [x] `cmd/export_report.go` -- `hepic export report --call-id <id>`
+- [x] `cmd/export_archive.go` -- `hepic export archive --call-id <id> -o file.tar.gz`
+- [x] `cmd/export_action.go` -- `hepic export action <type>`
+- [x] Binaere Responses (PCAP) korrekt in Datei schreiben statt auf stdout
 
 ## Akzeptanzkriterien
 

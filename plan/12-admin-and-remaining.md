@@ -59,16 +59,16 @@ Verbleibende Endpoint-Gruppen: Admin, Scripts, User-Settings, Advanced Settings,
 
 ## Aufgaben
 
-- [ ] `internal/admin/admin.go` -- Admin-Funktionen
-- [ ] `internal/script/script.go` -- Script CRUD
-- [ ] `cmd/admin.go` -- `hepic admin profiles|configdb|version`
-- [ ] `cmd/script.go` -- `hepic script list|create|update|delete`
-- [ ] `cmd/settings.go` -- `hepic settings list|create|update|delete`
-- [ ] `cmd/advanced.go` -- `hepic advanced list|get|create|update|delete`
-- [ ] `cmd/share.go` -- `hepic share report|transaction|pcap|text|ipalias|mapping`
-- [ ] `cmd/import.go` -- `hepic import pcap --file capture.pcap`
-- [ ] `cmd/clickhouse.go` -- `hepic clickhouse query "SELECT ..."`
-- [ ] `cmd/troubleshooting.go` -- `hepic troubleshooting log <type> <action>`
+- [x] `internal/admin/admin.go` -- Admin-Funktionen
+- [x] `internal/script/script.go` -- Script CRUD
+- [x] `cmd/admin.go` -- `hepic admin profiles|configdb|version`
+- [x] `cmd/script.go` -- `hepic script list|create|update|delete`
+- [x] `cmd/settings.go` -- `hepic settings list|create|update|delete`
+- [x] `cmd/advanced.go` -- `hepic advanced list|get|create|update|delete`
+- [x] `cmd/share.go` -- `hepic share report|transaction|pcap|text|ipalias|mapping`
+- [x] `cmd/import.go` -- `hepic import pcap --file capture.pcap`
+- [x] `cmd/clickhouse.go` -- `hepic clickhouse query "SELECT ..."`
+- [x] `cmd/troubleshooting.go` -- `hepic troubleshooting log <type> <action>`
 
 ## Akzeptanzkriterien
 

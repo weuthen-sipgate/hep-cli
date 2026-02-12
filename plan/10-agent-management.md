@@ -21,14 +21,14 @@ Verwaltung von Capture-Agents und deren Subscriptions.
 
 ## Aufgaben
 
-- [ ] `internal/agent/agent.go` -- Agent-Funktionen
-- [ ] `cmd/agent.go` -- `hepic agent` Parent-Command
-- [ ] `cmd/agent_list.go` -- `hepic agent list`
-- [ ] `cmd/agent_get.go` -- `hepic agent get <uuid>`
-- [ ] `cmd/agent_update.go` -- `hepic agent update <uuid> [flags]`
-- [ ] `cmd/agent_delete.go` -- `hepic agent delete <uuid>`
-- [ ] `cmd/agent_search.go` -- `hepic agent search --guid X --type Y`
-- [ ] `cmd/agent_type.go` -- `hepic agent type <type>`
+- [x] `internal/agent/agent.go` -- Agent-Funktionen
+- [x] `cmd/agent.go` -- `hepic agent` Parent-Command
+- [x] `cmd/agent_list.go` -- `hepic agent list`
+- [x] `cmd/agent_get.go` -- `hepic agent get <uuid>`
+- [x] `cmd/agent_update.go` -- `hepic agent update <uuid> [flags]`
+- [x] `cmd/agent_delete.go` -- `hepic agent delete <uuid>`
+- [x] `cmd/agent_search.go` -- `hepic agent search --guid X --type Y`
+- [x] `cmd/agent_type.go` -- `hepic agent type <type>`
 
 ## Akzeptanzkriterien
 
